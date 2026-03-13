@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - RoomEdge
+  - Box
+  - Entrance
+  - Room
+  - Exit
+  - Lever
   layers:
   - Default
   - TransparentFX
@@ -12,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Platform
-  - 
+  - Box
   - 
   - 
   - 
@@ -43,6 +49,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Boxes
+    uniqueID: 3780056909
     locked: 0
   - name: Player
     uniqueID: 2009365779
