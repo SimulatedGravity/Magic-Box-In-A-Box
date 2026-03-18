@@ -156,7 +156,14 @@ MonoBehaviour:
   cyoteTime: 0.15
   cameraPos: {x: 0, y: 0, z: -10}
   cameraSpeed: 10
-  nextScene: Tutorial
+  fallClip:
+  - {fileID: 8300000, guid: a6d549e17663b694a8ed72d13bdbe4cd, type: 3}
+  - {fileID: 8300000, guid: f9c086e2a99662a4a977a3ff2942d2c0, type: 3}
+  - {fileID: 8300000, guid: a0fbc56c45f2f6847a4c2434d2066dde, type: 3}
+  enterClip: {fileID: 8300000, guid: 7b303e9f633e74145a6d7ec477daad02, type: 3}
+  exitClip: {fileID: 8300000, guid: 17d95fb60886f3343a608b1589933d9f, type: 3}
+  clickClip: {fileID: 8300000, guid: efcbe6b9c55f1b749b030a4b18d0045f, type: 3}
+  endClip: {fileID: 8300000, guid: 947b3fa3779e8ef45ac6d401378d9db1, type: 3}
 --- !u!114 &2730755797115386977
 MonoBehaviour:
   m_ObjectHideFlags: 0

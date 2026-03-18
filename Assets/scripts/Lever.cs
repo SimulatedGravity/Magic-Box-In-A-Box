@@ -5,6 +5,7 @@ public class Lever : Power
 {
     public Power target;
     Animator animator => GetComponent<Animator>();
+    public AudioClip sound;
 
     private void Update()
     {

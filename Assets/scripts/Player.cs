@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb => gameObject.GetComponent<Rigidbody2D>();
     Animator animator => GetComponent<Animator>();
     bool isGrounded = false;
+    bool wasGrounded = false;
 
     [SerializeField] float jumpForce;
     [SerializeField] Vector2 groundCheckDimensions;
@@ -19,6 +20,11 @@ public class Player : MonoBehaviour
     [SerializeField] float cyoteTime;
     [SerializeField] Vector3 cameraPos;
     [SerializeField] float cameraSpeed;
+    [SerializeField] AudioClip[] fallClip;
+    [SerializeField] AudioClip enterClip;
+    [SerializeField] AudioClip exitClip;
+    [SerializeField] AudioClip clickClip;
+    [SerializeField] AudioClip endClip;
 
     float jumpTimer;
     float cyoteTimer;
@@ -32,7 +38,8 @@ public class Player : MonoBehaviour
     bool holding = false;
     bool entering = false;
     bool exiting = false;
-    bool telEnd = false;
+    bool exitEnd = false;
+    int gravityScale = 1;
 
     public void OnJump()
     {
@@ -41,13 +48,14 @@ public class Player : MonoBehaviour
 
     public void FinishAnimation()
     {
-        rb.gravityScale = 2;
+        gravityScale = 1;
         if (entering) transform.position = touchingEntrance.EndPos.position;
         else
         {
             transform.position = touchingExit.EndPos.position + Vector3.up/2;
-            telEnd = true;
+            exitEnd = true;
         }
+        Camera.main.GetComponent<Animator>().SetBool("Fade", false);
     }
 
     public void OnInteract()
@@ -57,6 +65,7 @@ public class Player : MonoBehaviour
             if (touchingLever != null)
             {
                 touchingLever.PowerOn = !touchingLever.PowerOn;
+                SoundFxManager.Instance.PlaySoundFxClip(touchingLever.sound, touchingLever.transform, 1f);
             }
             else
             {
@@ -90,7 +99,8 @@ public class Player : MonoBehaviour
                 rb.linearVelocity = Vector2.zero;
                 transform.position = new Vector3(touchingEntrance.transform.position.x, transform.position.y, transform.position.z);
                 touchingEntrance.Enter();
-                Camera.main.GetComponent<Animator>().SetTrigger("Fade");
+                Camera.main.GetComponent<Animator>().SetBool("Fade",true);
+                SoundFxManager.Instance.PlaySoundFxClip(enterClip, transform, 1f);
             }
         }
     }
@@ -104,6 +114,7 @@ public class Player : MonoBehaviour
     {
         if(value.Get<float>() > 0)
         {
+            if (Time.timeScale == 1) SoundFxManager.Instance.PlaySoundFxClip(clickClip,transform,1f);
             Time.timeScale = 1.7f;
             Camera.main.GetComponent<Animator>().SetBool("Sprinting", true);
         }
@@ -116,6 +127,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        rb.gravityScale = (rb.linearVelocityY < 0 ? 3:2) * gravityScale;
+
         if (holding)
         {
             heldObject.position = transform.GetChild(0).position;
@@ -150,21 +163,35 @@ public class Player : MonoBehaviour
         jumpTimer -= Time.deltaTime;
 
         Transform camform = Camera.main.transform;
-        if (telEnd && camform.position != cameraPos)
-        {
-            exiting = false;
-            touchingExit = null;
-            entering = false;
-            camform.position = cameraPos;
-            telEnd = false;
-        }
 
         if (entering || exiting) camform.position = cameraPos;
         else
         {
             camform.position = Vector3.MoveTowards(camform.position, cameraPos, Time.deltaTime * cameraSpeed);
         }
+
+        if (exitEnd && CheckCameraBounds())
+        {
+            exiting = false;
+            touchingExit = null;
+            entering = false;
+            camform.position = cameraPos;
+            exitEnd = false;
+        }
+
+        if(isGrounded && !wasGrounded)
+        {
+            if (rb.linearVelocityY <= 0.1f)
+                SoundFxManager.Instance.PlayRandomFxClip(fallClip, transform, 0.5f);
+        }
+        wasGrounded = isGrounded;
     }
+
+    private bool CheckCameraBounds()
+    {
+        return (transform.position.x < cameraPos.x + 10 && transform.position.x > cameraPos.x - 10 && transform.position.y < cameraPos.y + 10 && transform.position.y > cameraPos.y - 10);
+    }
+
     private void FixedUpdate()
     {
         if (changingRooms)
@@ -208,6 +235,8 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Finish"))
         {
             collision.GetComponent<Animator>().SetTrigger("consume");
+            Camera.main.GetComponent<Animator>().SetTrigger("End");
+            SoundFxManager.Instance.PlaySoundFxClip(endClip, collision.transform, 1f);
         }
         if (collision.CompareTag("RoomEdge"))
         {
@@ -222,11 +251,20 @@ public class Player : MonoBehaviour
             if (collision.CompareTag("Exit"))
             {
                 touchingExit = collision.GetComponent<Exit>();
-                exiting = true;
-                animator.SetTrigger("exiting");
-                rb.gravityScale = 0;
-                rb.linearVelocity = Vector2.zero;
-                Camera.main.GetComponent<Animator>().SetTrigger("Fade");
+
+                if (holding == true && touchingExit.EndPos == heldObject)
+                {
+                    Camera.main.GetComponent<Animator>().SetBool("Glitching", true);
+                }
+                else
+                {
+                    exiting = true;
+                    animator.SetTrigger("exiting");
+                    gravityScale = 0;
+                    rb.linearVelocity = Vector2.zero;
+                    Camera.main.GetComponent<Animator>().SetTrigger("Fade");
+                    SoundFxManager.Instance.PlaySoundFxClip(exitClip, transform, 1f);
+                }
             }
         }
     }
@@ -257,7 +295,11 @@ public class Player : MonoBehaviour
         }
         if (collision.CompareTag("Exit"))
         {
-            if (entering) entering = false;
+            if (entering)
+            {
+                entering = false;
+            }
+            Camera.main.GetComponent<Animator>().SetBool("Glitching", false);
         }
         if (collision.CompareTag("Box"))
         {
