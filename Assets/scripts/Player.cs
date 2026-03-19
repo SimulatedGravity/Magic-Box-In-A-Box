@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     bool exiting = false;
     bool exitEnd = false;
     int gravityScale = 1;
+    float timeScale = 1;
+    bool paused = false;
 
     public void OnJump()
     {
@@ -115,53 +117,69 @@ public class Player : MonoBehaviour
         if(value.Get<float>() > 0)
         {
             if (Time.timeScale == 1) SoundFxManager.Instance.PlaySoundFxClip(clickClip,transform,1f);
-            Time.timeScale = 1.7f;
+            timeScale = 1.7f;
             Camera.main.GetComponent<Animator>().SetBool("Sprinting", true);
         }
         else
         {
-            Time.timeScale = 1;
+            timeScale = 1;
             Camera.main.GetComponent<Animator>().SetBool("Sprinting", false);
         }
     }
 
+    public void OnPause()
+    {
+        paused = true;
+        FindAnyObjectByType<Menu>().Pause();
+    }
+
+    public void Resume()
+    {
+        paused = false;
+        FindAnyObjectByType<Menu>().Resume();
+    }
+
     private void Update()
     {
-        rb.gravityScale = (rb.linearVelocityY < 0 ? 3:2) * gravityScale;
-
-        if (holding)
-        {
-            heldObject.position = transform.GetChild(0).position;
-        }
-
-        CheckForGround();
-        if (isGrounded)
-        {
-            if (rb.linearVelocityY <= 0)
-            {
-                cyoteTimer = cyoteTime;
-                animator.SetBool("jumping", false);
-            }
-        }
+        if (paused) Time.timeScale = 0;
         else
         {
-            cyoteTimer -= Time.deltaTime;
-        }
+            Time.timeScale = timeScale;
+            rb.gravityScale = (rb.linearVelocityY < 0 ? 3 : 2) * gravityScale;
 
-        animator.SetBool("grounded", isGrounded);
-
-        if (!(entering || exiting))
-        {
-            if (jumpTimer > 0 && (cyoteTimer > 0 || isGrounded))
+            if (holding)
             {
-                animator.SetBool("jumping", true);
-                rb.linearVelocity = jumpForce * Vector2.up;
-                jumpTimer = 0;
-                cyoteTimer = 0;
+                heldObject.position = transform.GetChild(0).position;
             }
-        }
-        jumpTimer -= Time.deltaTime;
 
+            CheckForGround();
+            if (isGrounded)
+            {
+                if (rb.linearVelocityY <= 0)
+                {
+                    cyoteTimer = cyoteTime;
+                    animator.SetBool("jumping", false);
+                }
+            }
+            else
+            {
+                cyoteTimer -= Time.deltaTime;
+            }
+
+            animator.SetBool("grounded", isGrounded);
+
+            if (!(entering || exiting))
+            {
+                if (jumpTimer > 0 && (cyoteTimer > 0 || isGrounded))
+                {
+                    animator.SetBool("jumping", true);
+                    rb.linearVelocity = jumpForce * Vector2.up;
+                    jumpTimer = 0;
+                    cyoteTimer = 0;
+                }
+            }
+            jumpTimer -= Time.deltaTime;
+        }
         Transform camform = Camera.main.transform;
 
         if (entering || exiting) camform.position = cameraPos;
@@ -179,7 +197,7 @@ public class Player : MonoBehaviour
             exitEnd = false;
         }
 
-        if(isGrounded && !wasGrounded)
+        if (isGrounded && !wasGrounded)
         {
             if (rb.linearVelocityY <= 0.1f)
                 SoundFxManager.Instance.PlayRandomFxClip(fallClip, transform, 0.5f);
