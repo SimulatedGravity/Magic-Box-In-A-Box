@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         fxSlider.value = fxLevel;
         musicSlider.value = musicLevel;
     }

@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         if (touchingEntrance != null)
         {
             if(!(entering||exiting))
-            if (touchingEntrance.rb.linearVelocity.magnitude < 0.01)
+            if (touchingEntrance.rb.linearVelocity.y > -0.1)
             {
                 entering = true;
                 animator.SetTrigger("entering");

@@ -10,6 +10,7 @@ TagManager:
   - Room
   - Exit
   - Lever
+  - Catcher
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Platform
   - Box
   - BoxStopper
-  - 
+  - LazerCatcher
   - 
   - 
   - 
