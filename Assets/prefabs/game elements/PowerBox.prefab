@@ -758,7 +758,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2009365779
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2921796667531898037, guid: e298a910e859a6049a1760cfdfc965f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -874,10 +874,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 868476541131283113}
-  - component: {fileID: 5821672553935209077}
-  m_Layer: 0
+  - component: {fileID: 4052614805099013571}
+  - component: {fileID: 7082537349507983660}
+  m_Layer: 9
   m_Name: lazer emmiter_R
-  m_TagString: Untagged
+  m_TagString: Catcher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -891,7 +892,7 @@ Transform:
   m_GameObject: {fileID: 4669429928079731371}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.4, y: 0, z: 0}
+  m_LocalPosition: {x: 0.4, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -900,7 +901,7 @@ Transform:
   - {fileID: 3966288713595949564}
   m_Father: {fileID: 221022833292705620}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &5821672553935209077
+--- !u!114 &4052614805099013571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -909,21 +910,66 @@ MonoBehaviour:
   m_GameObject: {fileID: 4669429928079731371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abae905fb09e15c458f29fd67dc4a50b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bc860a1dfcfb554f94b27a02b2222f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
   startEnabled: 0
   sprite: {fileID: 4450239037628008639}
   onSprite: {fileID: 2663968603087651096, guid: dcd1252b353482548ba7f75f3eda41fb, type: 3}
   offSprite: {fileID: -8363731417064353006, guid: e298a910e859a6049a1760cfdfc965f2, type: 3}
+  target: {fileID: 0}
+  lazered: 0
   line: {fileID: 694031638973773212}
-  spriteR: {fileID: 4450239037628008639}
   mask:
     serializedVersion: 2
     m_Bits: 705
-  onClip: {fileID: 8300000, guid: e1b5183be3576fc41aeb22d954a12481, type: 3}
-  offClip: {fileID: 8300000, guid: 48bfc77fc18a2b14ab1c265f80eb4858, type: 3}
   light: {fileID: 1389461911116006805}
+--- !u!61 &7082537349507983660
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4669429928079731371}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.75, y: 0.02}
+  m_EdgeRadius: 0
 --- !u!1 &4721841476764200608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,7 +1211,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2009365779
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8363731417064353006, guid: e298a910e859a6049a1760cfdfc965f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1186,7 +1232,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8913955898633722270}
-  - component: {fileID: 8676432301576864975}
+  - component: {fileID: 3069269328312802165}
+  - component: {fileID: 3400953505003061854}
   m_Layer: 0
   m_Name: lazer emmiter_L
   m_TagString: Untagged
@@ -1203,7 +1250,7 @@ Transform:
   m_GameObject: {fileID: 7578228216360694081}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.4, y: 0, z: 0}
+  m_LocalPosition: {x: -0.4, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1212,7 +1259,7 @@ Transform:
   - {fileID: 7091442641744807047}
   m_Father: {fileID: 221022833292705620}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &8676432301576864975
+--- !u!114 &3069269328312802165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1221,18 +1268,63 @@ MonoBehaviour:
   m_GameObject: {fileID: 7578228216360694081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abae905fb09e15c458f29fd67dc4a50b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bc860a1dfcfb554f94b27a02b2222f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
   startEnabled: 0
   sprite: {fileID: 2663605677614817697}
   onSprite: {fileID: -3296971280211359118, guid: dcd1252b353482548ba7f75f3eda41fb, type: 3}
   offSprite: {fileID: 2921796667531898037, guid: e298a910e859a6049a1760cfdfc965f2, type: 3}
+  target: {fileID: 0}
+  lazered: 0
   line: {fileID: 6965830103221247391}
-  spriteR: {fileID: 2663605677614817697}
   mask:
     serializedVersion: 2
     m_Bits: 705
-  onClip: {fileID: 8300000, guid: e1b5183be3576fc41aeb22d954a12481, type: 3}
-  offClip: {fileID: 8300000, guid: 48bfc77fc18a2b14ab1c265f80eb4858, type: 3}
   light: {fileID: 4860917202443307010}
+--- !u!61 &3400953505003061854
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578228216360694081}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.75, y: 0.02}
+  m_EdgeRadius: 0

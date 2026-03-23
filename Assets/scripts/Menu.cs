@@ -61,6 +61,12 @@ public class Menu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
     }
+    public void Restart()
+    {
+        FindAnyObjectByType<Player>().Resume();
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     IEnumerator ChangeScene(string name)
     {
         Time.timeScale = 1;

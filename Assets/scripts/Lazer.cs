@@ -4,7 +4,6 @@ using UnityEngine;
 public class Lazer : Power
 {
     [SerializeField] LineRenderer line;
-    [SerializeField] SpriteRenderer spriteR;
     [SerializeField] LayerMask mask;
     [SerializeField] AudioClip onClip;
     [SerializeField] AudioClip offClip;

@@ -239,7 +239,7 @@ public class Player : MonoBehaviour
                 touchingEntrance = null;
             }
         }
-        catch (Exception e) {
+        catch {
             touchingEntrance = null;
         }
     }
