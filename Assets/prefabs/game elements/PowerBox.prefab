@@ -924,6 +924,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 705
   light: {fileID: 1389461911116006805}
+  wasLazered: 0
 --- !u!61 &7082537349507983660
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1234,9 +1235,9 @@ GameObject:
   - component: {fileID: 8913955898633722270}
   - component: {fileID: 3069269328312802165}
   - component: {fileID: 3400953505003061854}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: lazer emmiter_L
-  m_TagString: Untagged
+  m_TagString: Catcher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1282,6 +1283,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 705
   light: {fileID: 4860917202443307010}
+  wasLazered: 0
 --- !u!61 &3400953505003061854
 BoxCollider2D:
   m_ObjectHideFlags: 0

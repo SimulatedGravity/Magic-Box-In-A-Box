@@ -8,14 +8,15 @@ public class LazerHole : Catcher
     public bool wasLazered;
     public override void OnUpdate()
     {
+        LazerHole other = target.GetComponent<LazerHole>();
         wasLazered = lazered;
         if (lazered) PowerOn = true;
         else
         {
-            PowerOn = target.GetComponent<LazerHole>().wasLazered;
+            PowerOn = other.wasLazered;
         }
 
-        if (PowerOn && !lazered)
+        if (PowerOn && other.wasLazered)
         {
             light.SetActive(true);
 
@@ -24,7 +25,7 @@ public class LazerHole : Catcher
 
                 if (hit)
                 {
-                    line.SetPosition(0, transform.position);
+                    line.SetPosition(0, (Vector2) transform.position);
                     line.SetPosition(1, hit.point);
 
                     if (hit.collider.CompareTag("Catcher"))
