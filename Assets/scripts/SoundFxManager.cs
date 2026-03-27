@@ -5,6 +5,7 @@ public class SoundFxManager : MonoBehaviour
 {
     public static SoundFxManager Instance;
     [SerializeField] private AudioSource soundFxObject;
+    float noiseTimer = 0.2f;
 
     private void Awake()
     {
@@ -20,9 +21,15 @@ public class SoundFxManager : MonoBehaviour
             }
         }
     }
+    private void Update()
+    {
+        noiseTimer -= Time.deltaTime;
+    }
 
     public void PlaySoundFxClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
+        if (noiseTimer > 0) return;
+
         AudioSource audioSource = Instantiate(soundFxObject, spawnTransform.position, quaternion.identity);
 
         audioSource.clip = audioClip;

@@ -25,7 +25,7 @@ public class PushButton : Power
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Power collisionPower = collision.collider.GetComponent<Power>();
+        Power collisionPower = collision.collider.GetComponent<Box>();
         if (collisionPower != null)
         {
             collisions.Add(collisionPower);
@@ -34,7 +34,7 @@ public class PushButton : Power
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Power collisionPower = collision.collider.GetComponent<Power>();
+        Power collisionPower = collision.collider.GetComponent<Box>();
         if (collisionPower != null)
         {
             if (collisions.Contains(collisionPower))

@@ -6100,10 +6100,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Okay, this is taking too long.
+  m_text: 'If you press shift, things might go faster.
 
 
-    Try pressing shift'
+    It won''t help you solve
+    the puzzle though...'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f04651617f254f14892889314976b0a6, type: 2}
   m_sharedMaterial: {fileID: 2076392508239554151, guid: f04651617f254f14892889314976b0a6, type: 2}
@@ -6318,7 +6319,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8865805597351098748, guid: 3c099cf7699af88459cf5cc238fbc018, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1551230746500020898, guid: 3c099cf7699af88459cf5cc238fbc018, type: 3}
     - {fileID: 7479969695853446693, guid: 3c099cf7699af88459cf5cc238fbc018, type: 3}
@@ -9827,7 +9829,7 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 15
       m_TileSpriteIndex: 15
-      m_TileMatrixIndex: 5
+      m_TileMatrixIndex: 11
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -9837,7 +9839,7 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 14
       m_TileSpriteIndex: 14
-      m_TileMatrixIndex: 5
+      m_TileMatrixIndex: 11
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -9847,7 +9849,7 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 14
       m_TileSpriteIndex: 14
-      m_TileMatrixIndex: 5
+      m_TileMatrixIndex: 11
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -9857,7 +9859,7 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 14
       m_TileSpriteIndex: 14
-      m_TileMatrixIndex: 5
+      m_TileMatrixIndex: 11
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -9867,7 +9869,7 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 14
       m_TileSpriteIndex: 14
-      m_TileMatrixIndex: 5
+      m_TileMatrixIndex: 11
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -10210,7 +10212,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 41
+  - m_RefCount: 36
     m_Data:
       e00: 1
       e01: 0
@@ -10318,7 +10320,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 2
+  - m_RefCount: 7
     m_Data:
       e00: 1
       e01: 0
@@ -10461,13 +10463,13 @@ CompositeCollider2D:
       - X: -20000000
         Y: -172920000
     - - X: 60000000
-        Y: -182560000
+        Y: -184560016
       - X: 11040000
-        Y: -182560000
+        Y: -184560016
       - X: 20000000
-        Y: -182920000
+        Y: -184920000
       - X: 60000000
-        Y: -182920000
+        Y: -184920000
     - - X: -11040000
         Y: -197560000
       - X: -38960000
@@ -10566,10 +10568,10 @@ CompositeCollider2D:
       - {x: -1.1064402, y: -17.256}
       - {x: -6, y: -17.25603}
       - {x: -5.999971, y: -17.292}
-    - - {x: 5.999971, y: -18.292}
-      - {x: 5.999971, y: -18.256}
-      - {x: 1.1064382, y: -18.256098}
-      - {x: 1.9999985, y: -18.292}
+    - - {x: 5.999971, y: -18.492}
+      - {x: 5.999971, y: -18.456001}
+      - {x: 1.1064383, y: -18.456099}
+      - {x: 1.9999985, y: -18.492}
     - - {x: -1.9999985, y: -19.792}
       - {x: -1.1064402, y: -19.756}
       - {x: -3.8935616, y: -19.756098}

@@ -7653,7 +7653,7 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 15
       m_TileSpriteIndex: 13
-      m_TileMatrixIndex: 1
+      m_TileMatrixIndex: 7
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -7663,7 +7663,7 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 14
       m_TileSpriteIndex: 14
-      m_TileMatrixIndex: 1
+      m_TileMatrixIndex: 7
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -7673,7 +7673,7 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 13
       m_TileSpriteIndex: 15
-      m_TileMatrixIndex: 1
+      m_TileMatrixIndex: 7
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -8114,7 +8114,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 18
+  - m_RefCount: 15
     m_Data:
       e00: 1
       e01: 0
@@ -8214,6 +8214,24 @@ Tilemap:
       e11: 1
       e12: 0
       e13: -0.3
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - m_RefCount: 3
+    m_Data:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: -0.1
       e20: 0
       e21: 0
       e22: 1
@@ -8401,13 +8419,13 @@ CompositeCollider2D:
       - X: -20000000
         Y: -352920000
     - - X: 188960000
-        Y: -362560000
+        Y: -363560000
       - X: 161040000
-        Y: -362560000
+        Y: -363560000
       - X: 170000000
-        Y: -362920000
+        Y: -363919968
       - X: 180000000
-        Y: -362920000
+        Y: -363919968
     - - X: -11040000
         Y: -365560000
       - X: -38960000
@@ -8489,10 +8507,10 @@ CompositeCollider2D:
       - {x: -1.1064402, y: -35.256}
       - {x: -3.8935616, y: -35.2561}
       - {x: -3.0000017, y: -35.292}
-    - - {x: 18.000002, y: -36.292}
-      - {x: 18.89356, y: -36.256}
-      - {x: 16.106438, y: -36.2561}
-      - {x: 16.999998, y: -36.292}
+    - - {x: 18.000002, y: -36.392}
+      - {x: 18.89356, y: -36.356}
+      - {x: 16.106438, y: -36.3561}
+      - {x: 16.999998, y: -36.392}
     - - {x: -1.9999985, y: -36.592}
       - {x: -1.1064402, y: -36.556}
       - {x: -3.8935616, y: -36.5561}
