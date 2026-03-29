@@ -58,7 +58,8 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 485eb6decefad9f42a9c61bc281354ad, type: 3}
     m_RemovedComponents:
     - {fileID: 8973342846168915273, guid: 82d5209aa94162d42bdf956f973469d1, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3030998574841697792, guid: 82d5209aa94162d42bdf956f973469d1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2205989376701731023, guid: 82d5209aa94162d42bdf956f973469d1, type: 3}
@@ -101,4 +102,4 @@ MonoBehaviour:
   rb: {fileID: 4049770254732659455}
   platformLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088

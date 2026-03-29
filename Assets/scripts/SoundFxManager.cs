@@ -5,6 +5,7 @@ public class SoundFxManager : MonoBehaviour
 {
     public static SoundFxManager Instance;
     [SerializeField] private AudioSource soundFxObject;
+    [SerializeField] private AudioSource existingSource;
     float noiseTimer = 0.2f;
 
     private void Awake()

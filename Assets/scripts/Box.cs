@@ -28,6 +28,7 @@ public class Box : Power
             if(value == true)
             {
                 rb.simulated = false;
+                rb.linearVelocity = Vector2.zero;
                 SoundFxManager.Instance.PlaySoundFxClip(pickupClip, transform, 1f);
             }
             else

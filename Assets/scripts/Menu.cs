@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,11 +18,28 @@ public class Menu : MonoBehaviour
     static float fxLevel = 1;
     static float musicLevel = 1;
 
+    [SerializeField] bool lockCursor;
+    [SerializeField] Button firstSelected;
+
+    [SerializeField] Button level1Button;
+    [SerializeField] Button settingsBackButton;
+    [SerializeField] ColorBlock colors;
     private void Start()
     {
+        if (lockCursor)
+            Cursor.lockState = CursorLockMode.Locked;
+        else
+            Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 1;
         fxSlider.value = fxLevel;
         musicSlider.value = musicLevel;
+
+        firstSelected.Select();
+
+        foreach (Selectable s in FindObjectsByType<Selectable>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            s.colors = colors;
+        }
     }
     public void StartGame()
     {
@@ -34,10 +52,28 @@ public class Menu : MonoBehaviour
     public void OpenSettings(bool open)
     {
         settingMenu.SetActive(open);
+
+        if (open)
+        {
+            settingsBackButton.Select();
+        }
+        else
+        {
+            firstSelected.Select();
+        }
     }
     public void OpenSelect(bool open)
     {
         levelSelect.SetActive(open);
+
+        if (open)
+        {
+            level1Button.Select();
+        }
+        else
+        {
+            firstSelected.Select();
+        }
     }
     public void SelectLevel(string level)
     {
@@ -51,7 +87,9 @@ public class Menu : MonoBehaviour
     }
     public void Pause()
     {
+        Cursor.lockState = CursorLockMode.None;
         pauseMenu.SetActive(true);
+        firstSelected.Select();
     }
     public void OnResume()
     {
@@ -59,6 +97,10 @@ public class Menu : MonoBehaviour
     }
     public void Resume()
     {
+        if (lockCursor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         pauseMenu.SetActive(false);
     }
     public void Restart()

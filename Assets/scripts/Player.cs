@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
 
     public void OnJump()
     {
+        if(!paused)
         jumpTimer = jumpBuffer;
     }
 
@@ -91,18 +92,21 @@ public class Player : MonoBehaviour
 
     public void OnCrouch()
     {
-        if (touchingEntrance != null)
+        if (!paused)
         {
-            if(!(entering||exiting))
-            if (touchingEntrance.rb.linearVelocity.y > -0.1)
+            if (touchingEntrance != null)
             {
-                entering = true;
-                animator.SetTrigger("entering");
-                rb.linearVelocity = Vector2.zero;
-                transform.position = new Vector3(touchingEntrance.transform.position.x, transform.position.y, transform.position.z);
-                touchingEntrance.Enter();
-                Camera.main.GetComponent<Animator>().SetBool("Fade",true);
-                SoundFxManager.Instance.PlaySoundFxClip(enterClip, transform, 1f);
+                if (!(entering || exiting))
+                    if (touchingEntrance.rb.linearVelocity.y > -0.1)
+                    {
+                        entering = true;
+                        animator.SetTrigger("entering");
+                        rb.linearVelocity = Vector2.zero;
+                        transform.position = new Vector3(touchingEntrance.transform.position.x, transform.position.y, transform.position.z);
+                        touchingEntrance.Enter();
+                        Camera.main.GetComponent<Animator>().SetBool("Fade", true);
+                        SoundFxManager.Instance.PlaySoundFxClip(enterClip, transform, 1f);
+                    }
             }
         }
     }

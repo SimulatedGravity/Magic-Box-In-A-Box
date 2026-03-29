@@ -150,7 +150,7 @@ MonoBehaviour:
   groundCheckDimensions: {x: 0.47, y: 0.1}
   platformLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   movementSpeed: 250
   jumpBuffer: 0.2
   cyoteTime: 0.15
