@@ -5853,6 +5853,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   color1: {r: 0.7490196, g: 0.5764706, b: 0.37254903, a: 1}
   targetColor: {r: 0.5473477, g: 0.68123525, b: 0.7735849, a: 1}
+  sprite1: {fileID: 21300000, guid: 85ac3272e09c5f8479d3c4bce52d48ff, type: 3}
+  sprite2: {fileID: 21300000, guid: 75579f2794ab351488a809d76e3567ca, type: 3}
 --- !u!4 &1053472646
 Transform:
   m_ObjectHideFlags: 0

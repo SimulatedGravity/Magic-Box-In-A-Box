@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     {
         if (!(entering || exiting))
         {
-            if (touchingLever != null)
+            if (touchingLever != null && (holding || touchingBox == null))
             {
                 touchingLever.PowerOn = !touchingLever.PowerOn;
                 SoundFxManager.Instance.PlaySoundFxClip(touchingLever.sound, touchingLever.transform, 1f);
